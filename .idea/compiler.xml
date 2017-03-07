@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="gadziksy-ear" />
+        <module name="gadziksy-ejb" />
+        <module name="gadziksy-web" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="dvapi" target="1.7" />
+      <module name="gadziksdb" target="1.7" />
+      <module name="gadziksy" target="1.7" />
+      <module name="gadziksy-ear" target="1.7" />
+      <module name="gadziksy-ejb" target="1.7" />
+      <module name="gadziksy-web" target="1.7" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

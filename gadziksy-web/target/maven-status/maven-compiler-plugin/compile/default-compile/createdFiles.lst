@@ -1,0 +1,4 @@
+gadziks/util/WebResources.class
+gadziks/rest/JaxRsActivator.class
+gadziks/rest/MemberResourceRESTService.class
+gadziks/controller/MemberController.class

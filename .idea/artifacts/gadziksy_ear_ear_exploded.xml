@@ -1,0 +1,17 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-ear" name="gadziksy-ear:ear exploded">
+    <output-path>$PROJECT_DIR$/gadziksy-ear/target/gadziksy-ear</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="gadziksy-ear/javaeeApplication/JavaEE" />
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/gadziksy-ear/target/gadziksy-ear/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="archive" name="gadziksy-web.war">
+        <element id="artifact" artifact-name="gadziksy-web:war exploded" />
+      </element>
+      <element id="archive" name="gadziksy-ejb.jar">
+        <element id="artifact" artifact-name="gadziksy-ejb:ejb exploded" />
+      </element>
+    </root>
+  </artifact>
+</component>
