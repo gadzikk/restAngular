@@ -18,16 +18,22 @@ package gadziks.rest;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * A class extending {@link Application} and annotated with @ApplicationPath is the Java EE 7 "no XML" approach to activating
  * JAX-RS.
- * 
+ * <p>
  * <p>
  * Resources are served relative to the servlet path specified in the {@link ApplicationPath} annotation.
  * </p>
  */
-@ApplicationPath("/rest")
+@ApplicationPath("/")
 public class JaxRsActivator extends Application {
-    /* class body intentionally left blank */
+    public Set<Class<?>> getClasses() {
+        Set<Class<?>> classes = new HashSet<>();
+        classes.add(MemberResourceRESTService.class);
+        return classes;
+    }
 }

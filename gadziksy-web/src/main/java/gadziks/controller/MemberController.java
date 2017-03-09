@@ -35,9 +35,6 @@ import gadziks.service.MemberRegistration;
 public class MemberController {
 
     @Inject
-    private FacesContext facesContext;
-
-    @Inject
     private MemberRegistration memberRegistration;
 
     private Member newMember;
@@ -51,13 +48,11 @@ public class MemberController {
     public void register() throws Exception {
         try {
             memberRegistration.register(newMember);
-            facesContext.addMessage(null,
-                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Registered!", "Registration successful"));
             initNewMember();
         } catch (Exception e) {
             String errorMessage = getRootErrorMessage(e);
             FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_ERROR, errorMessage, "Registration Unsuccessful");
-            facesContext.addMessage(null, m);
+
         }
     }
 
