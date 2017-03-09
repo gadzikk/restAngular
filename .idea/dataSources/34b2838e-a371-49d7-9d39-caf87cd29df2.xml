@@ -9,8 +9,8 @@
     </database>
     <schema id="3" parent="2" name="public">
       <ObjectId>2200</ObjectId>
-      <IntrospectionTimestamp>2017-02-05.16:24:59.959</IntrospectionTimestamp>
-      <IntrospectionStateNumber>677</IntrospectionStateNumber>
+      <IntrospectionTimestamp>2017-03-09.01:55:01.839</IntrospectionTimestamp>
+      <IntrospectionStateNumber>666</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -29,90 +29,36 @@
     <schema id="8" parent="2" name="information_schema">
       <ObjectId>12121</ObjectId>
     </schema>
-    <sequence id="9" parent="3" name="hibernate_sequence">
-      <ObjectId>16405</ObjectId>
-      <StateNumber>675</StateNumber>
-      <SequenceIdentity>1</SequenceIdentity>
-    </sequence>
-    <sequence id="10" parent="3" name="human_human_id_seq">
+    <sequence id="9" parent="3" name="human_human_id_seq">
       <ObjectId>16396</ObjectId>
       <StateNumber>666</StateNumber>
       <SequenceIdentity>1</SequenceIdentity>
     </sequence>
-    <table id="11" parent="3" name="human">
+    <table id="10" parent="3" name="human">
       <ObjectId>16398</ObjectId>
       <StateNumber>666</StateNumber>
     </table>
-    <table id="12" parent="3" name="registrant">
-      <ObjectId>16407</ObjectId>
-      <StateNumber>676</StateNumber>
-    </table>
-    <column id="13" parent="11" name="human_id">
+    <column id="11" parent="10" name="human_id">
       <Position>1</Position>
       <DataType>bigint|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>666</StateNumber>
       <DefaultExpression>nextval(&apos;human_human_id_seq&apos;::regclass)</DefaultExpression>
     </column>
-    <column id="14" parent="11" name="human_fname">
+    <column id="12" parent="10" name="human_fname">
       <Position>2</Position>
       <DataType>varchar(255)|0</DataType>
       <StateNumber>666</StateNumber>
     </column>
-    <column id="15" parent="11" name="human_lname">
+    <column id="13" parent="10" name="human_lname">
       <Position>3</Position>
       <DataType>varchar(255)|0</DataType>
       <StateNumber>666</StateNumber>
     </column>
-    <column id="16" parent="11" name="human_age">
+    <column id="14" parent="10" name="human_age">
       <Position>4</Position>
       <DataType>integer|0</DataType>
       <StateNumber>666</StateNumber>
     </column>
-    <column id="17" parent="12" name="id">
-      <Position>1</Position>
-      <DataType>bigint|0</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>676</StateNumber>
-    </column>
-    <column id="18" parent="12" name="email">
-      <Position>2</Position>
-      <DataType>varchar(255)|0</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>676</StateNumber>
-    </column>
-    <column id="19" parent="12" name="name">
-      <Position>3</Position>
-      <DataType>varchar(25)|0</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>676</StateNumber>
-    </column>
-    <column id="20" parent="12" name="phone_number">
-      <Position>4</Position>
-      <DataType>varchar(12)|0</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>676</StateNumber>
-    </column>
-    <index id="21" parent="12" name="registrant_pkey">
-      <ObjectId>16410</ObjectId>
-      <ColNames>id</ColNames>
-      <Unique>1</Unique>
-    </index>
-    <index id="22" parent="12" name="ukit677o4jaydleb048j9oub9mk">
-      <ObjectId>16412</ObjectId>
-      <ColNames>email</ColNames>
-      <Unique>1</Unique>
-    </index>
-    <key id="23" parent="12" name="registrant_pkey">
-      <ObjectId>16411</ObjectId>
-      <ColNames>id</ColNames>
-      <UnderlyingIndexName>registrant_pkey</UnderlyingIndexName>
-      <Primary>1</Primary>
-    </key>
-    <key id="24" parent="12" name="ukit677o4jaydleb048j9oub9mk">
-      <ObjectId>16413</ObjectId>
-      <ColNames>email</ColNames>
-      <UnderlyingIndexName>ukit677o4jaydleb048j9oub9mk</UnderlyingIndexName>
-    </key>
   </database-model>
 </dataSource>

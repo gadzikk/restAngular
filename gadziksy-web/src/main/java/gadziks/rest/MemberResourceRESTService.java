@@ -141,9 +141,9 @@ public class MemberResourceRESTService {
         }
 
         // Check the uniqueness of the email address
-        if (emailAlreadyExists(member.getEmail())) {
-            throw new ValidationException("Unique Email Violation");
-        }
+//        if (emailAlreadyExists(member.getEmail())) {
+//            throw new ValidationException("Unique Email Violation");
+//        }
     }
 
     /**
