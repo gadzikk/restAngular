@@ -80,3 +80,11 @@ fabric.properties
 hs_err_pid*
 /
 # End of https://www.gitignore.io/api/java,intellij
+gadziksy-ejb/target/generated-sources/
+gadziksy-ejb/target/generated-test-sources/
+gadziksy-web/src/main/java/resource/
+gadziksy-web/src/test/
+gadziksy-web/target/gadziksy-web/WEB-INF/classes/gadziks/controller/
+gadziksy-web/target/gadziksy-web/WEB-INF/lib/
+gadziksy-web/target/gadziksy-web/WEB-INF/templates/
+gadziksy-web/target/generated-sources/
