@@ -29,15 +29,14 @@ import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
-@XmlRootElement
 @Table(name = "human")
 public class Member implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @SequenceGenerator(name = "HUMAN_SEQ" ,sequenceName = "human_id_seq", allocationSize = 1)
+    @SequenceGenerator(name = "HUMAN_SEQ", sequenceName = "human_id_seq", allocationSize = 1)
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE , generator = "HUMAN_SEQ")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "HUMAN_SEQ")
     private Long id;
 
     @Column(name = "name")
