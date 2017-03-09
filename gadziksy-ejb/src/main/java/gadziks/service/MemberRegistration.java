@@ -28,8 +28,8 @@ import java.util.logging.Logger;
 @Stateless
 public class MemberRegistration {
 
-    @Inject
-    private Logger log;
+//    @Inject
+//    private Logger log;
 
     @Inject
     private EntityManager em;
@@ -38,7 +38,7 @@ public class MemberRegistration {
     private Event<Member> memberEventSrc;
 
     public void register(Member member) throws Exception {
-        log.info("Registering " + member.getName());
+//        log.info("Registering " + member.getName());
         em.persist(member);
         memberEventSrc.fire(member);
     }
