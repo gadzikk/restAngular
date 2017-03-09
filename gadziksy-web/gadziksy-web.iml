@@ -26,6 +26,7 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="gadziksy-ejb" scope="PROVIDED" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.jboss.spec.javax.ejb:jboss-ejb-api_3.2_spec:1.0.0.Final" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.jboss.resteasy:jaxrs-api:3.0.10.Final" level="project" />
     <orderEntry type="library" name="Maven: org.jboss.resteasy:resteasy-jaxrs:2.2.1.GA" level="project" />
     <orderEntry type="library" name="Maven: org.scannotation:scannotation:1.0.3" level="project" />
