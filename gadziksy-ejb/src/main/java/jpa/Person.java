@@ -1,7 +1,8 @@
 package jpa;
 
+import converter.LocalDateAdapter;
 import javax.persistence.*;
-import javax.print.attribute.standard.MediaSize;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.io.Serializable;
 import java.time.LocalDate;
 
@@ -10,13 +11,13 @@ import java.time.LocalDate;
  */
 @Entity
 @Table(name = "person")
-public class Person implements Serializable{
+public class Person implements Serializable {
     private static final long serialVersionUID = -5303610267032836218L;
 
-    @SequenceGenerator(name = "PERSON_SEQ" ,sequenceName = "person_id_seq", allocationSize = 1)
+    @SequenceGenerator(name = "PERSON_SEQ", sequenceName = "person_id_seq", allocationSize = 1)
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE , generator = "PERSON_SEQ")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PERSON_SEQ")
     private Long id;
 
     @Column(name = "name")
@@ -55,6 +56,7 @@ public class Person implements Serializable{
         this.lname = lname;
     }
 
+    @XmlJavaTypeAdapter(LocalDateAdapter.class)
     public LocalDate getDob() {
         return dob;
     }
