@@ -12,7 +12,7 @@
             <!-- Each input is bound to a property on the prototype newMember object -->
             <div>
                 <label for="name">Name:</label>
-                <input type="text" name="name" id="name" ng-model="newMember.name" placeholder="Your Name" required
+                <input type="text" name="name" id="name" ng-model="newPerson.name" placeholder="Your Name" required
                        autofocus/>
                 <!--
                 <span class="error" ng-show="regForm.name.$error.required">required</span>
@@ -21,7 +21,7 @@
             </div>
             <div>
                 <label for="lname">Lname:</label>
-                <input type="text" name="lname" id="lname" ng-model="newMember.lname" placeholder="Your Lastname"
+                <input type="text" name="lname" id="lname" ng-model="newPerson.lname" placeholder="Your Lastname"
                        required/>
                 <!--
                 <span class="error" ng-show="regForm.email.$error.required">required</span>
@@ -31,7 +31,7 @@
             </div>
             <div>
                 <label for="dob">Date</label>
-                <input type="date" name="dob" id="dob" ng-model="newMember.dob" placeholder="Your Date" required/>
+                <input type="date" name="dob" id="dob" ng-model="newPerson.dob" placeholder="Your Date" required/>
                 <!--
                 <span class="error" ng-show="regForm.phoneNumber.$error.required">required</span>
                 <span class="error" ng-show="regForm.phoneNumber.$error.pattern">must be between 10 and 12 digits</span>
@@ -61,8 +61,8 @@
     <!-- A list of registered members -->
     <h2>Persons</h2>
     <!-- If there are no members registered, instead of showing the table, we show a simple message. -->
-    <em ng-show="members.length == 0">No registered members.</em>
-    <table ng-hide="members.length == 0" class="simpletablestyle">
+    <em ng-show="persons.length == 0">No registered members.</em>
+    <table ng-hide="persons.length == 0" class="simpletablestyle">
         <thead>
         <tr>
             <th>Id</th>
@@ -73,12 +73,12 @@
         </tr>
         </thead>
         <!-- The table is built using the AngularJS repeat function, iterating over the members variable, and ordering by the property specified in the orderBy variable -->
-        <tr ng-repeat="member in members | orderBy:orderBy">
-            <td>{{member.id}}</td>
-            <td>{{member.name}}</td>
-            <td>{{member.lname}}</td>
-            <td>{{member.dob}}</td>
-            <td><a href="rest/person/{{member.id}}">details-{{member.id}}</a>
+        <tr ng-repeat="person in persons | orderBy:orderBy">
+            <td>{{person.id}}</td>
+            <td>{{person.name}}</td>
+            <td>{{person.lname}}</td>
+            <td>{{person.dob}}</td>
+            <td><a href="rest/person/{{person.id}}">details-{{person.id}}</a>
             </td>
     </table>
     <div>

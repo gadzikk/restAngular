@@ -2,7 +2,7 @@ function MembersCtrl($scope, $http, MembersSrv) {
 
     // Define a refresh function, that updates the data from the REST service
     $scope.refresh = function() {
-        $scope.members = MembersSrv.query();
+        $scope.persons = MembersSrv.getAllPersons();
     };
     // Define a clearMessages function that resets the values of the error and
     // success messages.
@@ -22,7 +22,7 @@ function MembersCtrl($scope, $http, MembersSrv) {
         // Clear input fields. If $scope.newMember was set to an empty object {},
         // then invalid form values would not be reset.
         // By specifying all properties, input fields with invalid values are also reset.
-        $scope.newMember = {name: "", lname: "", phoneNumber: ""};
+        $scope.newPerson = {name: "", lname: "", phoneNumber: ""};
         // clear messages
         $scope.clearMessages();
     };
@@ -32,7 +32,7 @@ function MembersCtrl($scope, $http, MembersSrv) {
     $scope.register = function() {
         $scope.clearMessages();
 
-        MembersSrv.save($scope.newMember, function(data) {
+        MembersSrv.save($scope.newPerson, function(data) {
             // Update the list of members
             $scope.refresh();
             // Clear the form

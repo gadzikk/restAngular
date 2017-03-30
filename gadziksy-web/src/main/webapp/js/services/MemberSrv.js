@@ -15,6 +15,14 @@
  * limitations under the License.
  */
 // Define the REST resource service, allowing us to interact with it as a high level service
-angular.module('membersService', ['ngResource']).factory('MembersSrv', function ($resource) {
-    return $resource('rest/person', {});
-});
+angular.module('membersService', []).service('MembersSrv', [
+    '$http', function ($http) {
+        this.getAllPersons = function () {
+            var url = "http://localhost:8080/gadziksy-web/rest/person";
+            var req = {
+                method: 'GET',
+                url: url,
+            };
+            return $http(req);
+        }
+    }]);
