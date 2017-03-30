@@ -15,7 +15,6 @@
  * limitations under the License.
  */
 // Define the REST resource service, allowing us to interact with it as a high level service
-angular.module('membersService', ['ngResource']).
-    factory('Members', function($resource){
-  return $resource('rest/person', {});
+angular.module('membersService', ['ngResource']).factory('MembersSrv', function ($resource) {
+    return $resource('rest/person', {});
 });

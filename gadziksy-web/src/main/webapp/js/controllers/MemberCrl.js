@@ -1,26 +1,9 @@
-/*
- * JBoss, Home of Professional Open Source
- * Copyright 2015, Red Hat, Inc. and/or its affiliates, and individual
- * contributors by the @authors tag. See the copyright.txt in the
- * distribution for a full listing of individual contributors.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- * http://www.apache.org/licenses/LICENSE-2.0
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-function MembersCtrl($scope, $http, Members) {
+function MembersCtrl($scope, $http, MembersSrv) {
 
     // Define a refresh function, that updates the data from the REST service
     $scope.refresh = function() {
-        $scope.members = Members.query();
+        $scope.members = MembersSrv.query();
     };
-
     // Define a clearMessages function that resets the values of the error and
     // success messages.
     $scope.clearMessages = function () {
@@ -39,8 +22,7 @@ function MembersCtrl($scope, $http, Members) {
         // Clear input fields. If $scope.newMember was set to an empty object {},
         // then invalid form values would not be reset.
         // By specifying all properties, input fields with invalid values are also reset.
-        $scope.newMember = {name: "", email: "", phoneNumber: ""};
-
+        $scope.newMember = {name: "", lname: "", phoneNumber: ""};
         // clear messages
         $scope.clearMessages();
     };
@@ -50,14 +32,11 @@ function MembersCtrl($scope, $http, Members) {
     $scope.register = function() {
         $scope.clearMessages();
 
-        Members.save($scope.newMember, function(data) {
-
+        MembersSrv.save($scope.newMember, function(data) {
             // Update the list of members
             $scope.refresh();
-
             // Clear the form
             $scope.reset();
-
             // mark success on the registration form
             $scope.successMessages = [ 'Member Registered' ];
         }, function(result) {
@@ -67,16 +46,13 @@ function MembersCtrl($scope, $http, Members) {
                 $scope.errorMessages = [ 'Unknown  server error' ];
             }
         });
-
     };
 
     // Call the refresh() function, to populate the list of members
     $scope.refresh();
-
     // Initialize newMember here to prevent Angular from sending a request
     // without a proper Content-Type.
     $scope.reset();
-
     // Set the default orderBy to the name property
     $scope.orderBy = 'name';
 }
