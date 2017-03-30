@@ -1,8 +1,10 @@
 function MembersCtrl($scope, $http, MembersSrv) {
 
     // Define a refresh function, that updates the data from the REST service
-    $scope.refresh = function() {
-        $scope.persons = MembersSrv.getAllPersons();
+    $scope.refresh = function () {
+        return MembersSrv.getAllPersons().then(function (data) {
+            $scope.persons = data.data;
+        });
     };
     // Define a clearMessages function that resets the values of the error and
     // success messages.
@@ -14,9 +16,9 @@ function MembersCtrl($scope, $http, MembersSrv) {
 
     // Define a reset function, that clears the prototype newMember object, and
     // consequently, the form
-    $scope.reset = function() {
+    $scope.reset = function () {
         // Sets the form to it's pristine state
-        if($scope.regForm) {
+        if ($scope.regForm) {
             $scope.regForm.$setPristine();
         }
         // Clear input fields. If $scope.newMember was set to an empty object {},
@@ -29,21 +31,21 @@ function MembersCtrl($scope, $http, MembersSrv) {
 
     // Define a register function, which adds the member using the REST service,
     // and displays any error messages
-    $scope.register = function() {
+    $scope.register = function () {
         $scope.clearMessages();
 
-        MembersSrv.save($scope.newPerson, function(data) {
+        MembersSrv.save($scope.newPerson, function (data) {
             // Update the list of members
             $scope.refresh();
             // Clear the form
             $scope.reset();
             // mark success on the registration form
-            $scope.successMessages = [ 'Member Registered' ];
-        }, function(result) {
+            $scope.successMessages = ['Member Registered'];
+        }, function (result) {
             if ((result.status == 409) || (result.status == 400)) {
                 $scope.errors = result.data;
             } else {
-                $scope.errorMessages = [ 'Unknown  server error' ];
+                $scope.errorMessages = ['Unknown  server error'];
             }
         });
     };
