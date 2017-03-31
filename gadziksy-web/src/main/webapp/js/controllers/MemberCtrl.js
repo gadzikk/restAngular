@@ -17,14 +17,14 @@ myApp.controller('MembersCtrl',['$scope','$http', 'MembersSrv',function ($scope,
         if ($scope.regForm) {
             $scope.regForm.$setPristine();
         }
-        $scope.newPerson = {name: "", lname: "", phoneNumber: ""};
+        $scope.newPerson = {name: "", lname: "", dob: ""};
         $scope.clearMessages();
     };
 
     $scope.register = function () {
         $scope.clearMessages();
 
-        MembersSrv.save($scope.newPerson, function (data) {
+        MembersSrv.addPerson($scope.newPerson, function (data) {
             $scope.refresh();
             $scope.reset();
             $scope.successMessages = ['Member Registered'];
@@ -39,5 +39,5 @@ myApp.controller('MembersCtrl',['$scope','$http', 'MembersSrv',function ($scope,
 
     $scope.refresh();
     $scope.reset();
-    $scope.orderBy = 'name';
+    $scope.orderBy = 'id';
 }]);

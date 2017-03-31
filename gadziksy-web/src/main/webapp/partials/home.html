@@ -20,7 +20,7 @@
             </div>
             <div>
                 <label for="dob">Date</label>
-                <input type="date" name="dob" id="dob" ng-model="newPerson.dob" placeholder="Your Date" required/>
+                <input type="text" name="dob" id="dob" ng-model="newPerson.dob" placeholder="Your Date" required/>
             </div>
 
             <ul ng-hide="!successMessages" class="success">
@@ -32,7 +32,7 @@
             </ul>
 
             <div>
-                <input type="submit" ng-disabled="regForm.$invalid" id="register" value="Register"/>
+                <input type="submit"  id="register" value="Register"/>
                 <input type="button" ng-click="reset()" name="cancel"
                        id="cancel" value="Cancel"/>
             </div>
