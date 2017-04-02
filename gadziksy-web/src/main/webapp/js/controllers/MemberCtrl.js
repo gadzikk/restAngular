@@ -24,20 +24,19 @@ myApp.controller('MembersCtrl',['$scope','$http', 'MembersSrv',function ($scope,
     $scope.register = function () {
         $scope.clearMessages();
 
-        MembersSrv.addPerson($scope.newPerson, function (data) {
-            $scope.refresh();
-            $scope.reset();
-            $scope.successMessages = ['Member Registered'];
-        }, function (result) {
-            if ((result.status == 409) || (result.status == 400)) {
-                $scope.errors = result.data;
-            } else {
-                $scope.errorMessages = ['Unknown  server error'];
-            }
+     return MembersSrv.addPerson($scope.newPerson).then(function (data) {
+        $scope.refresh();
+  //      $scope.apply();
         });
     };
 
     $scope.refresh();
     $scope.reset();
     $scope.orderBy = 'id';
+
+    // $scope.$watch(function watchPersons(scope){
+    //     return (scope.persons);
+    // }, function(){})
+
+
 }]);
