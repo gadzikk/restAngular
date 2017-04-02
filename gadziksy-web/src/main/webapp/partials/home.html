@@ -22,6 +22,27 @@
                 <label for="dob">Date</label>
                 <input type="text" name="dob" id="dob" ng-model="newPerson.dob" placeholder="Your Date" required/>
             </div>
+            <div>
+                <b>ORDER</b>
+            </div>
+            <div>
+                <label>
+                    <label for="orderId">orderId</label>
+                    <input type="radio" name="orderId" id="orderId" ng-model="orderBy" value="id"/>
+                </label>
+            </div>
+            <div>
+                <label>
+                    <label for="orderName">orderName</label>
+                    <input type="radio" name="orderName" id="orderName" ng-model="orderBy" value="name"/>
+                </label>
+            </div>
+            <div>
+                <label>
+                    <label for="orderLname">orderLname</label>
+                    <input type="radio" name="orderLname" id="orderLname" ng-model="orderBy" value="lname"/>
+                </label>
+            </div>
 
             <ul ng-hide="!successMessages" class="success">
                 <li ng-repeat="message in successMessages">{{message}}</li>
@@ -30,9 +51,10 @@
             <ul ng-hide="!errorMessages" class="error">
                 <li ng-repeat="message in errorMessages">{{message}}</li>
             </ul>
+            <br></br>
 
             <div>
-                <input type="submit"  id="register" value="Register"/>
+                <input type="submit" id="register" value="Register"/>
                 <input type="button" ng-click="reset()" name="cancel"
                        id="cancel" value="Cancel"/>
             </div>

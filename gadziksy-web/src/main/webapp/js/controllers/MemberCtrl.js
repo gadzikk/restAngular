@@ -1,5 +1,5 @@
 var myApp = angular.module('myApp');
-myApp.controller('MembersCtrl',['$scope','$http', 'MembersSrv',function ($scope, $http, MembersSrv) {
+myApp.controller('MembersCtrl', ['$scope', '$http', 'MembersSrv', function ($scope, $http, MembersSrv) {
 
     $scope.refresh = function () {
         return MembersSrv.getAllPersons().then(function (data) {
@@ -23,20 +23,13 @@ myApp.controller('MembersCtrl',['$scope','$http', 'MembersSrv',function ($scope,
 
     $scope.register = function () {
         $scope.clearMessages();
-
-     return MembersSrv.addPerson($scope.newPerson).then(function (data) {
-        $scope.refresh();
-  //      $scope.apply();
+        return MembersSrv.addPerson($scope.newPerson).then(function (data) {
+            $scope.refresh();
         });
     };
 
     $scope.refresh();
     $scope.reset();
     $scope.orderBy = 'id';
-
-    // $scope.$watch(function watchPersons(scope){
-    //     return (scope.persons);
-    // }, function(){})
-
 
 }]);
