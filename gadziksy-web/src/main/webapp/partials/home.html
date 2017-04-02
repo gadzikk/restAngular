@@ -26,23 +26,26 @@
                 <b>ORDER</b>
             </div>
             <div>
-                <label>
-                    <label for="orderId">orderId</label>
-                    <input type="radio" name="orderId" id="orderId" ng-model="orderBy" value="id"/>
-                </label>
+                <label for="desc">desc</label>
+                <input type="checkbox" name="desc" id="desc" ng-model="desc"/>
             </div>
-            <div>
-                <label>
-                    <label for="orderName">orderName</label>
-                    <input type="radio" name="orderName" id="orderName" ng-model="orderBy" value="name"/>
-                </label>
-            </div>
-            <div>
-                <label>
-                    <label for="orderLname">orderLname</label>
-                    <input type="radio" name="orderLname" id="orderLname" ng-model="orderBy" value="lname"/>
-                </label>
-            </div>
+            <label>
+                <label for="orderId">orderId</label>
+                <input type="radio" name="orderId" id="orderId" ng-model="orderBy" value="id"/>
+            </label>
+            <label>
+                <label for="orderName">orderName</label>
+                <input type="radio" name="orderName" id="orderName" ng-model="orderBy" value="name"/>
+            </label>
+            <label>
+                <label for="orderLname">orderLname</label>
+                <input type="radio" name="orderLname" id="orderLname" ng-model="orderBy" value="lname"/>
+            </label>
+            <label>
+                <label for="orderDate">orderDate</label>
+                <input type="radio" name="orderDate" id="orderDate" ng-model="orderBy" value="dob"/>
+            </label>
+            <br>
 
             <ul ng-hide="!successMessages" class="success">
                 <li ng-repeat="message in successMessages">{{message}}</li>
@@ -51,7 +54,7 @@
             <ul ng-hide="!errorMessages" class="error">
                 <li ng-repeat="message in errorMessages">{{message}}</li>
             </ul>
-            <br></br>
+
 
             <div>
                 <input type="submit" id="register" value="Register"/>
@@ -72,7 +75,7 @@
             <th>REST URL</th>
         </tr>
         </thead>
-        <tr ng-repeat="person in persons | orderBy:orderBy">
+        <tr ng-repeat="person in persons | orderBy:orderBy:desc">
             <td>{{person.id}}</td>
             <td>{{person.name}}</td>
             <td>{{person.lname}}</td>

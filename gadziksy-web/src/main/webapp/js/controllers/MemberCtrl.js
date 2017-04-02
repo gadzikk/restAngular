@@ -31,5 +31,6 @@ myApp.controller('MembersCtrl', ['$scope', '$http', 'MembersSrv', function ($sco
     $scope.refresh();
     $scope.reset();
     $scope.orderBy = 'id';
+    $scope.desc = false;
 
 }]);
