@@ -17,4 +17,14 @@ angular.module('membersService', []).service('MembersSrv', [
             var promise = $http(req);
             return promise;
         };
+        this.removePerson = function (id) {
+            var req =
+            {
+                method:'DELETE',
+                url : "http://localhost:8080/gadziksy-web/rest/person/" + id,
+                data: id
+            }
+            var promise = $http(req);
+            return promise;
+        }
     }]);

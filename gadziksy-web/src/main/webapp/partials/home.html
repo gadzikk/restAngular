@@ -80,7 +80,7 @@
             <td>{{person.name}}</td>
             <td>{{person.lname}}</td>
             <td>{{person.dob}}</td>
-            <td><a href="rest/person/{{person.id}}">details-{{person.id}}</a>
+            <td><input type="button" name="remove" value="remove" ng-click="remove(person.id)"/></td>
             </td>
     </table>
     <div>

@@ -27,6 +27,12 @@ myApp.controller('MembersCtrl', ['$scope', '$http', 'MembersSrv', function ($sco
             $scope.refresh();
         });
     };
+    $scope.remove = function (id) {
+        return MembersSrv.removePerson(id).then(function (data) {
+            $scope.refresh();
+        });
+        
+    };
 
     $scope.refresh();
     $scope.reset();

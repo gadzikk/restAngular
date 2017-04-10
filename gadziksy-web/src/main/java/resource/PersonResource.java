@@ -48,13 +48,15 @@ public class PersonResource {
     }
 
     @DELETE
-    @Consumes(MediaType.APPLICATION_JSON)
-    public Response deletePerson(long id) {
+    @Path("/{id}")
+//    @Produces(MediaType.APPLICATION_JSON)
+//    @Consumes(MediaType.APPLICATION_JSON)
+    public Response deletePerson(@PathParam("id") long id) {
         Person p1 = personRepository.getParticularPerson(id);
         if (p1 == null) {
             Response.status(Response.Status.BAD_REQUEST);
         }
-        deletePerson(id);
+        personRepository.deletePerson(id);
         return Response.ok().build();
     }
 }
