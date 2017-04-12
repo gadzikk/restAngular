@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp" ng-controller="AccCtrl">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>{{hello}}</p>
+<p>{{world}}</p>
+<form name="accForm" ng-submit="createAccount()">
+    <div>
+        <label for="email">Email</label>
+        <input type="text" name="email" id="email" ng-bind="newAccount.email"/>
+    </div>
+    <div>
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" ng-bind="newAccount.password"/>
+    </div>
+    <div>
+        <input type="submit" id="registerAccount" value="Sign-up"/>
+    </div>
+</form>
+
+<form name="accForm" ng-submit="getAccountByEmail()">
+    <div>
+        <label for="getemail">CheckEmail</label>
+        <input type="text" name="getemail" id="getemail" ng-bind="ExistingAccount.email"/>
+    </div>
+
+    <div>
+        <input type="submit" id="check" value="Check"/>
+    </div>
+</form>
+<table>
+
+    <tr>
+        <td>{{ExistingAccount.id}}</td>
+        <td>{{ExistingAccount.email}}</td>
+        <td>{{ExistingAccount.password}}</td>
+        <td>{{ExistingAccount.creationDate}}</td>
+    </tr>
+</table>
+
+</body>
+</html>

@@ -9,7 +9,7 @@ import java.time.LocalDate;
 /**
  * Created by gadzik on 11.03.17.
  */
-@Entity
+@Entity(name = "account")
 @Table(name = "account")
 public class Account {
 
@@ -29,6 +29,11 @@ public class Account {
     private LocalDate creationDate;
 
     public Account() {
+    }
+
+    public Account(String email, String password) {
+        this.email = email;
+        this.password = password;
     }
 
     public Long getId() {
@@ -62,5 +67,9 @@ public class Account {
 
     public void setCreationDate(LocalDate creationDate) {
         this.creationDate = creationDate;
+    }
+    @PrePersist
+    public void prepersist(){
+        creationDate = LocalDate.now();
     }
 }

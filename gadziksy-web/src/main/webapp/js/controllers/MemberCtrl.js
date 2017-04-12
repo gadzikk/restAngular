@@ -25,6 +25,7 @@ myApp.controller('MembersCtrl', ['$scope', '$http', 'MembersSrv', function ($sco
         $scope.clearMessages();
         return MembersSrv.addPerson($scope.newPerson).then(function (data) {
             $scope.refresh();
+            $scope.reset();
         });
     };
     $scope.remove = function (id) {
