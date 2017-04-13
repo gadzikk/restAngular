@@ -78,7 +78,6 @@ public class Account {
         this.money = money;
     }
 
-    @XmlJavaTypeAdapter(LocalDateAdapter.class)
     public LocalDate getCreationDate() {
         return creationDate;
     }

@@ -17,6 +17,7 @@
 package gadziks.rest;
 
 import resource.AccountResource;
+import resource.AuthenticationResource;
 import resource.PersonResource;
 
 import javax.ws.rs.ApplicationPath;
@@ -38,6 +39,7 @@ public class JaxRsActivator extends Application {
         Set<Class<?>> classes = new HashSet<>();
         classes.add(PersonResource.class);
         classes.add(AccountResource.class);
+        classes.add(AuthenticationResource.class);
         return classes;
     }
 }

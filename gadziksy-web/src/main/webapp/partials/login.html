@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp" ng-controller="AuthCtrl">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{{information}}
+
+<form name="loginForm" >
+    <div>
+        <label for="email">Email</label>
+        <input type="text" ng-disabled="accountFound" name="email" id="email" ng-model="account.email">
+    </div>
+
+    <div ng-show="accountFound">
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" ng-model="account.password">
+    </div>
+    <div>
+        <input type="submit" ng-hide="accountFound" id="emailsubmit" value="NEXT" ng-click="emailPassed()"/>
+        <input type="submit"  ng-show="accountFound" id="login" value="LOGIN" ng-click="login()"/>
+    </div>
+</form>
+
+{{loggedin}}
+
+</body>
+</html>

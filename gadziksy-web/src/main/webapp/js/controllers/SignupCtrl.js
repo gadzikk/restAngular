@@ -1,24 +1,25 @@
 var myApp = angular.module('myApp');
-myApp.controller('AccCtrl', ['$scope', '$http', 'AccSrv', function ($scope, $http, AccSrv) {
+myApp.controller('AccCtrl', ['$scope', '$http', 'SignupSrv', '$location', function ($scope, $http, SignupSrv, $location) {
     $scope.ExistingAccount = {
         id: "",
         email: "",
         password: "",
-        money:"",
+        money: "",
         creationDate: ""
     };
 
     $scope.addAccount = function () {
-        return AccSrv.createAccount($scope.newAccount).then(function (data) {
+        return SignupSrv.createAccount($scope.newAccount).then(function (data) {
             $scope.refresh();
         })
     };
 
     $scope.getAccount = function () {
-        return AccSrv.getAccountByEmail($scope.ExistingAccount.email).then(function (data) {
+        return SignupSrv.getAccountByEmail($scope.ExistingAccount.email).then(function (data) {
             $scope.ExistingAccount = data.data;
             if (data.status == 200) {
                 $scope.accountFound = true;
+                $location.path("http://localhost:8080/gadziksy-web/index.html#/home");
             }
         }, function () {
             $scope.accountFound = false;
@@ -32,7 +33,7 @@ myApp.controller('AccCtrl', ['$scope', '$http', 'AccSrv', function ($scope, $htt
         $scope.newAccount = {
             email: "",
             password: "",
-            money:""
+            money: ""
         };
     }
 }]);

@@ -6,6 +6,9 @@ angular.module('myApp', ['ngRoute', 'membersService']).config(
         }).when('/account', {
             templateUrl: 'partials/account.html',
             controller: 'AccCtrl'
+        }).when('/login', {
+            templateUrl: 'partials/login.html',
+            controller: 'AuthCtrl'
         }).otherwise({
             redirectTo: '/home'
         });
