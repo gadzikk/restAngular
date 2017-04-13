@@ -26,7 +26,7 @@ public class AccountResource {
     @Path("/create")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response createAccount(SaveAccountRequest request) {
-        Account account = new Account(request.getEmail(), request.getPassword());
+        Account account = new Account(request.getEmail(), request.getPassword() , request.getMoney());
         accountRepository.createAccount(account);
         return Response.ok().build();
     }

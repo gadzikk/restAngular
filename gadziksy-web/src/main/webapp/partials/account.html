@@ -15,14 +15,18 @@
         <input type="password" name="password" id="password" ng-model="newAccount.password"/>
     </div>
     <div>
+        <label for="money">Money</label>
+        <input type="money" name="money" id="money" ng-model="newAccount.money"/>
+    </div>
+    <div>
         <input type="submit" id="registerAccount" value="Sign-up"/>
     </div>
 </form>
 
 <form name="accForm" ng-submit="getAccount()">
     <div>
-        <label for="getemail">CheckEmail</label>
-        <input type="text" name="getemail" id="getemail" ng-model="ExistingAccount.email"/>
+        <label for="mail">CheckEmail</label>
+        <input type="text" name="mail" id="mail" ng-model="ExistingAccount.email"/>
     </div>
 
     <div>
@@ -35,6 +39,7 @@
         <td>{{ExistingAccount.id}}</td>
         <td>{{ExistingAccount.email}}</td>
         <td>{{ExistingAccount.password}}</td>
+        <td>{{ExistingAccount.money}}</td>
         <td>{{ExistingAccount.creationDate}}</td>
     </tr>
 </table>

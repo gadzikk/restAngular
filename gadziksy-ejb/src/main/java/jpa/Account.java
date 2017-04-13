@@ -4,6 +4,7 @@ import converter.LocalDateAdapter;
 
 import javax.persistence.*;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 /**
@@ -13,9 +14,9 @@ import java.time.LocalDate;
 @Table(name = "account")
 public class Account {
 
-    @SequenceGenerator(name="ACCOUNT_SEQ" , sequenceName = "account_id_seq", allocationSize = 1)
     @Id
     @Column(name = "id")
+    @SequenceGenerator(name="ACCOUNT_SEQ" , sequenceName = "account_id_seq", allocationSize = 1)
     @GeneratedValue(generator = "ACCOUNT_SEQ", strategy = GenerationType.SEQUENCE)
     private Long id;
 
@@ -24,6 +25,9 @@ public class Account {
 
     @Column(name = "password")
     private String password;
+
+    @Column(name = "money" )
+    private BigDecimal money;
 
     @Column(name = "creation_date")
     private LocalDate creationDate;
@@ -34,6 +38,12 @@ public class Account {
     public Account(String email, String password) {
         this.email = email;
         this.password = password;
+    }
+
+    public Account(String email, String password, BigDecimal money) {
+        this.email = email;
+        this.password = password;
+        this.money = money;
     }
 
     public Long getId() {
@@ -58,6 +68,14 @@ public class Account {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public BigDecimal getMoney() {
+        return money;
+    }
+
+    public void setMoney(BigDecimal money) {
+        this.money = money;
     }
 
     @XmlJavaTypeAdapter(LocalDateAdapter.class)

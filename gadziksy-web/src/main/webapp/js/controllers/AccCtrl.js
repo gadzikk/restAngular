@@ -4,9 +4,9 @@ myApp.controller('AccCtrl', ['$scope', '$http', 'AccSrv', function ($scope, $htt
         id: "",
         email: "",
         password: "",
+        money:"",
         creationDate: ""
     };
-    $scope.accountFounded = false;
 
     $scope.addAccount = function () {
         return AccSrv.createAccount($scope.newAccount).then(function (data) {
@@ -31,7 +31,8 @@ myApp.controller('AccCtrl', ['$scope', '$http', 'AccSrv', function ($scope, $htt
         }
         $scope.newAccount = {
             email: "",
-            password: ""
+            password: "",
+            money:""
         };
     }
 }]);
