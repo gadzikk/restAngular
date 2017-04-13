@@ -1,5 +1,5 @@
 angular.module('myApp', ['ngRoute', 'membersService']).config(
-    ['$httpProvider', '$routeProvider','$locationProvider', function ($httpProvider, $routeProvider,$locationProvider) {
+    ['$httpProvider', '$routeProvider', function ($httpProvider, $routeProvider) {
         $routeProvider.when('/home', {
             templateUrl: 'partials/home.html',
             controller: 'MembersCtrl'

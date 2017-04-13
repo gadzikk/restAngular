@@ -5,34 +5,32 @@
     <title>Title</title>
 </head>
 <body>
-<p>{{hello}}</p>
-<p>{{world}}</p>
-<form name="accForm" ng-submit="createAccount()">
+<form name="accForm" ng-submit="addAccount()">
     <div>
         <label for="email">Email</label>
-        <input type="text" name="email" id="email" ng-bind="newAccount.email"/>
+        <input type="text" name="email" id="email" ng-model="newAccount.email"/>
     </div>
     <div>
         <label for="password">Password</label>
-        <input type="password" name="password" id="password" ng-bind="newAccount.password"/>
+        <input type="password" name="password" id="password" ng-model="newAccount.password"/>
     </div>
     <div>
         <input type="submit" id="registerAccount" value="Sign-up"/>
     </div>
 </form>
 
-<form name="accForm" ng-submit="getAccountByEmail()">
+<form name="accForm" ng-submit="getAccount()">
     <div>
         <label for="getemail">CheckEmail</label>
-        <input type="text" name="getemail" id="getemail" ng-bind="ExistingAccount.email"/>
+        <input type="text" name="getemail" id="getemail" ng-model="ExistingAccount.email"/>
     </div>
 
     <div>
         <input type="submit" id="check" value="Check"/>
     </div>
 </form>
-<table>
 
+<table style="border: 1px solid black;" ng-show="accountFound">
     <tr>
         <td>{{ExistingAccount.id}}</td>
         <td>{{ExistingAccount.email}}</td>

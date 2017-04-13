@@ -1,5 +1,4 @@
-angular.module('membersService', []).service('MembersSrv', [
-    '$http', function ($http) {
+angular.module('membersService', []).service('MembersSrv', ['$http', function ($http) {
         this.getAllPersons = function () {
             var url = "http://localhost:8080/gadziksy-web/rest/person";
             var req = {
@@ -7,7 +6,7 @@ angular.module('membersService', []).service('MembersSrv', [
                 url: url
             };
             return $http(req);
-        }
+        };
         this.addPerson = function (params) {
             var req = {
                 method: 'POST',
@@ -23,7 +22,7 @@ angular.module('membersService', []).service('MembersSrv', [
                 method:'DELETE',
                 url : "http://localhost:8080/gadziksy-web/rest/person/" + id,
                 data: id
-            }
+            };
             var promise = $http(req);
             return promise;
         }
