@@ -1,4 +1,4 @@
-myApp.service('AuthSrv', ['$http', function ($http) {
+myApp.service('AuthSrv', ['$http', '$cookies', function ($http, $cookies) {
 
     this.getAccountByEmail = function (email) {
         var req = {
@@ -10,11 +10,21 @@ myApp.service('AuthSrv', ['$http', function ($http) {
 
     this.userlogin = function (params) {
         var req = {
-            method:'POST',
-            url:"http://localhost:8080/gadziksy-web/rest/authentication/login",
-            data:params
+            method: 'POST',
+            url: "http://localhost:8080/gadziksy-web/rest/authentication/login",
+            data: params
         };
         return $http(req);
+    };
 
+    this.userLogout = function () {
+        $cookies.remove('email');
+        $cookies.remove('money');
+        $cookies.remove('creationDate');
+        var req = {
+            method: 'POST',
+            url: "http://localhost:8080/gadziksy-web/rest/authentication/logout"
+        };
+        return $http(req);
     }
 }]);

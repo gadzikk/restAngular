@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp" ng-controller="myAccountCtrl">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div style="width:80%;
+margin:0px auto;">
+    <div style="float:right">
+        <a href="http://localhost:8080/gadziksy-web/index.html#/home">Home</a>
+        <a href="http://localhost:8080/gadziksy-web/index.html#/account">Sign Up</a>
+        <a href="http://localhost:8080/gadziksy-web/index.html#/login">Login</a>
+        <input type="submit" value="LOGOUT" ng-click="logout()"/>
+    </div>
+    <div>
+        EMAIL: {{account.email}}
+    </div>
+    <div>
+        MONEY: {{account.money}}
+    </div>
+    <div>
+        CREATION DATE: {{account.creationDate}}
+    </div>
+</div>
+
+
+</body>
+</html>

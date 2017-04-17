@@ -49,5 +49,12 @@ public class AuthenticationResource {
         return Response.ok().entity(user).build();
     }
 
-
+    @POST
+    @Path("/logout")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response logout(){
+        authenticationService.clearSession();
+        return Response.ok().build();
+    }
 }

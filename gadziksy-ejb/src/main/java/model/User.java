@@ -1,5 +1,8 @@
 package model;
 
+import converter.LocalDateAdapter;
+
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
@@ -37,6 +40,7 @@ public class User {
         this.money = money;
     }
 
+    @XmlJavaTypeAdapter(LocalDateAdapter.class)
     public LocalDate getCreationDate() {
         return creationDate;
     }

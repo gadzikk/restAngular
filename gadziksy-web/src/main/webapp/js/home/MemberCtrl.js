@@ -1,9 +1,6 @@
 var myApp = angular.module('myApp');
 myApp.controller('MembersCtrl', ['$scope', '$http', 'MembersSrv', '$cookies' ,function ($scope, $http, MembersSrv , $cookies) {
 
-    $scope.emailFromCookies =$cookies.get('email');
-    $scope.moneyFromCookies =$cookies.get('money');
-
     $scope.refresh = function () {
         return MembersSrv.getAllPersons().then(function (data) {
             $scope.persons = data.data;

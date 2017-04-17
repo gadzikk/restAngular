@@ -14,17 +14,6 @@ myApp.controller('AccCtrl', ['$scope', '$http', 'SignupSrv', '$location', functi
         })
     };
 
-    $scope.getAccount = function () {
-        return SignupSrv.getAccountByEmail($scope.ExistingAccount.email).then(function (data) {
-            $scope.ExistingAccount = data.data;
-            if (data.status == 200) {
-                $scope.accountFound = true;
-                $location.path("http://localhost:8080/gadziksy-web/index.html#/home");
-            }
-        }, function () {
-            $scope.accountFound = false;
-        })
-    };
 
     $scope.refresh = function () {
         if ($scope.accForm) {

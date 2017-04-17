@@ -16,7 +16,7 @@ public class Account {
 
     @Id
     @Column(name = "id")
-    @SequenceGenerator(name="ACCOUNT_SEQ" , sequenceName = "account_id_seq", allocationSize = 1)
+    @SequenceGenerator(name = "ACCOUNT_SEQ", sequenceName = "account_id_seq", allocationSize = 1)
     @GeneratedValue(generator = "ACCOUNT_SEQ", strategy = GenerationType.SEQUENCE)
     private Long id;
 
@@ -26,7 +26,7 @@ public class Account {
     @Column(name = "password")
     private String password;
 
-    @Column(name = "money" )
+    @Column(name = "money")
     private BigDecimal money;
 
     @Column(name = "creation_date")
@@ -78,6 +78,7 @@ public class Account {
         this.money = money;
     }
 
+    @XmlJavaTypeAdapter(LocalDateAdapter.class)
     public LocalDate getCreationDate() {
         return creationDate;
     }
@@ -85,8 +86,9 @@ public class Account {
     public void setCreationDate(LocalDate creationDate) {
         this.creationDate = creationDate;
     }
+
     @PrePersist
-    public void prepersist(){
+    public void prepersist() {
         creationDate = LocalDate.now();
     }
 }
