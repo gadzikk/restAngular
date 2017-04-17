@@ -2,6 +2,7 @@ package resource;
 
 import facadeApi.AccountRepository;
 import jpa.Account;
+import model.User;
 import request.LoginRequest;
 import serviceApi.AuthenticationService;
 import session.UserSession;
@@ -44,7 +45,8 @@ public class AuthenticationResource {
             return Response.status(Response.Status.UNAUTHORIZED).build();
         }
         authenticationService.assignSession(account);
-        return Response.ok().build();
+        User user = new User(session.getEmail() , session.getMoney() , session.getCreationDate());
+        return Response.ok().entity(user).build();
     }
 
 
