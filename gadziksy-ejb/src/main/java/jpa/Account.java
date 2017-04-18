@@ -6,6 +6,8 @@ import javax.persistence.*;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by gadzik on 11.03.17.
@@ -31,6 +33,9 @@ public class Account {
 
     @Column(name = "creation_date")
     private LocalDate creationDate;
+
+    @OneToMany(targetEntity = Transfer.class , fetch = FetchType.LAZY , mappedBy = "account" , cascade = CascadeType.REMOVE)
+    private Set<Transfer> transfers = new HashSet<>();
 
     public Account() {
     }
@@ -76,6 +81,14 @@ public class Account {
 
     public void setMoney(BigDecimal money) {
         this.money = money;
+    }
+
+    public Set<Transfer> getTransfers() {
+        return transfers;
+    }
+
+    public void setTransfers(Set<Transfer> transfers) {
+        this.transfers = transfers;
     }
 
     @XmlJavaTypeAdapter(LocalDateAdapter.class)
