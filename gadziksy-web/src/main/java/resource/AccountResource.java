@@ -1,7 +1,9 @@
 package resource;
 
 import facadeApi.AccountRepository;
+import facadeApi.TransferRepository;
 import jpa.Account;
+import jpa.Transfer;
 import model.GuestInfo;
 import request.SaveAccountRequest;
 import request.TransferMoneyRequest;
@@ -30,6 +32,9 @@ public class AccountResource {
 
     @Inject
     private UserSession session;
+
+    @EJB
+    private TransferRepository transferRepository;
 
     @POST
     @Path("/create")
@@ -73,6 +78,9 @@ public class AccountResource {
         BigDecimal receiverMoney = receiver.getMoney().add(request.getTransferedAmount());
         receiver.setMoney(receiverMoney);
         accountRepository.updateAccount(receiver);
+
+        Transfer transfer = new Transfer(sender, receiver, request.getTransferedAmount());
+        transferRepository.writeTransfer(transfer);
 
         TransferMoneyResponse response = new TransferMoneyResponse.Builder()
                 .sender(new GuestInfo(sender.getId(), sender.getEmail()))
