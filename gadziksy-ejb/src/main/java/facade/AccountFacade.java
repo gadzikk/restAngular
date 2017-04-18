@@ -15,6 +15,11 @@ import java.util.Optional;
 public class AccountFacade extends AbstractFacade implements AccountRepository {
 
     @Override
+    public Optional<Account> getAccountById(Long id) {
+        return Optional.ofNullable(entityManager.find(Account.class, id));
+    }
+
+    @Override
     public Optional<Account> getAccountByEmail(String email) {
         TypedQuery<Account> query = entityManager.createQuery("SELECT X FROM account X WHERE X.email=:email", Account.class)
                 .setParameter("email", email);

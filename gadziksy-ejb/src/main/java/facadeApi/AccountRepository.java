@@ -12,6 +12,7 @@ import java.util.Optional;
 @Local
 public interface AccountRepository {
 
+    Optional<Account> getAccountById(Long id);
     Optional<Account> getAccountByEmail(String email);
     void createAccount(Account account);
     void updateAccount(Account account);
