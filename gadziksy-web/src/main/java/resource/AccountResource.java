@@ -8,6 +8,7 @@ import model.GuestInfo;
 import request.SaveAccountRequest;
 import request.TransferMoneyRequest;
 import response.TransferMoneyResponse;
+import serviceApi.AccountService;
 import session.UserSession;
 
 import javax.ejb.EJB;
@@ -34,7 +35,7 @@ public class AccountResource {
     private UserSession session;
 
     @EJB
-    private TransferRepository transferRepository;
+    private AccountService accountService;
 
     @POST
     @Path("/create")
@@ -70,17 +71,9 @@ public class AccountResource {
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
         Account sender = accountRepository.getAccountByEmail(session.getEmail()).get();
-        BigDecimal senderMoney = sender.getMoney().subtract(request.getTransferedAmount());
-        sender.setMoney(senderMoney);
-        accountRepository.updateAccount(sender);
-
         Account receiver = opAccount.get();
-        BigDecimal receiverMoney = receiver.getMoney().add(request.getTransferedAmount());
-        receiver.setMoney(receiverMoney);
-        accountRepository.updateAccount(receiver);
 
-        Transfer transfer = new Transfer(sender, receiver, request.getTransferedAmount());
-        transferRepository.writeTransfer(transfer);
+        accountService.prepareTransfer(sender, receiver, request.getTransferedAmount());
 
         TransferMoneyResponse response = new TransferMoneyResponse.Builder()
                 .sender(new GuestInfo(sender.getId(), sender.getEmail()))
@@ -89,8 +82,6 @@ public class AccountResource {
                 .build();
 
         return Response.ok().entity(response).build();
-
-
     }
 
 
