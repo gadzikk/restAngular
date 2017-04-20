@@ -34,7 +34,11 @@ public class AccountServiceBean implements AccountService {
 //        RETURN NULL;
 //        END;
 //        $$ language plpgsql;
-
+//        UPDATE ACCOUNT SET MONEY = MONEY + NEW.transfered_money WHERE id = NEW.RECEIVER_ID;
+//        RETURN NULL;
+//        END;
+//        $$ language plpgsql;
+//
 //        CREATE TRIGGER transfertrg
 //        AFTER INSERT
 //        ON transfer
