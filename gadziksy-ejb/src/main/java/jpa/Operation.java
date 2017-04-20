@@ -1,5 +1,7 @@
 package jpa;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import converter.LocalDateTimeAdapter;
 import enums.OperationType;
 
@@ -20,9 +22,10 @@ public class Operation {
     @GeneratedValue(generator = "OPERATION_SEQ", strategy = GenerationType.SEQUENCE)
     @Column(name = "id")
     private Long id;
-    
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "account_id", referencedColumnName = "id")
+    @JsonBackReference
     private Account account;
 
     @Enumerated(EnumType.STRING)
@@ -45,6 +48,7 @@ public class Operation {
     public void setId(Long id) {
         this.id = id;
     }
+
 
     public Account getAccount() {
         return account;

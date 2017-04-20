@@ -12,5 +12,5 @@ import java.util.Optional;
 @Local
 public interface OperationRepository {
     List<Operation> getAllOperations(Long id);
-    Optional<Operation> getLastOperation(String email);
+    Optional<Operation> getLastOperation(Long id);
 }

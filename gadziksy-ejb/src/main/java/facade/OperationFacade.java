@@ -13,17 +13,23 @@ import java.util.Optional;
  */
 @Stateless
 public class OperationFacade extends AbstractFacade implements OperationRepository {
+
     @Override
     public List<Operation> getAllOperations(Long id) {
-        TypedQuery<Operation> query = entityManager.createQuery("SELECT O FROM operation O where O.account.id=4", Operation.class);
-//                .setParameter("id", id);
+        TypedQuery<Operation> query = entityManager.createQuery("SELECT O FROM operation O where O.account.id=:id", Operation.class)
+                .setParameter("id", id);
         return query.getResultList();
     }
 
     @Override
-    public Optional<Operation> getLastOperation(String email) {
-        TypedQuery<Operation> query = entityManager.createQuery("SELECT O FROM operation O where O.id = (select id from account x where x.email=:email)", Operation.class)
-                .setParameter("email", email);
-        return Optional.ofNullable(query.getResultList().stream().findFirst().get());
+    public Optional<Operation> getLastOperation(Long id) {
+        TypedQuery<Operation> query = entityManager.createQuery("SELECT O FROM operation O where O.account.id=:id", Operation.class)
+                .setParameter("id", id);
+
+        if (query.getResultList().isEmpty()) {
+            return Optional.empty();
+        }
+        int lastElement = query.getResultList().size() - 1;
+        return Optional.ofNullable(query.getResultList().get(lastElement));
     }
 }

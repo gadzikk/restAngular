@@ -1,5 +1,6 @@
 package jpa;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import converter.LocalDateAdapter;
 import converter.LocalDateTimeAdapter;
 
@@ -17,17 +18,19 @@ import java.time.LocalDateTime;
 public class Transfer {
 
     @Id
-    @SequenceGenerator(name = "TRANSFER_SEQ" , sequenceName = "transfer_id_seq" , allocationSize = 1)
+    @SequenceGenerator(name = "TRANSFER_SEQ", sequenceName = "transfer_id_seq", allocationSize = 1)
     @GeneratedValue(generator = "TRANSFER_SEQ", strategy = GenerationType.SEQUENCE)
     @Column(name = "id")
     private Long id;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "sender_id", referencedColumnName = "id")
+    @JsonBackReference
     private Account senderAccount;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "receiver_id", referencedColumnName = "id")
+    @JsonBackReference
     private Account receiverAccount;
 
     @Column(name = "transfered_money")
@@ -87,7 +90,7 @@ public class Transfer {
     }
 
     @PrePersist
-    public void prepersist(){
+    public void prepersist() {
         creationDate = LocalDateTime.now();
     }
 }

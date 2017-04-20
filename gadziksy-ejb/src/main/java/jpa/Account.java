@@ -1,5 +1,7 @@
 package jpa;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import converter.LocalDateAdapter;
 
 import javax.persistence.*;
@@ -35,9 +37,11 @@ public class Account {
     private LocalDate creationDate;
 
     @OneToMany(targetEntity = Transfer.class , fetch = FetchType.LAZY , mappedBy = "senderAccount" , cascade = CascadeType.REMOVE)
+    @JsonManagedReference
     private Set<Transfer> transfers = new HashSet<>();
 
     @OneToMany(targetEntity = Operation.class , fetch = FetchType.LAZY , mappedBy = "account" , cascade = CascadeType.REMOVE)
+    @JsonManagedReference
     private Set<Operation> operations = new HashSet<>();
 
     public Account() {
