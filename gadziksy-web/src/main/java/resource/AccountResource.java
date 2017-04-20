@@ -37,6 +37,9 @@ public class AccountResource {
     @EJB
     private AccountService accountService;
 
+    private TransferRepository transferRepository;
+
+
     @POST
     @Path("/create")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -74,6 +77,13 @@ public class AccountResource {
         Account receiver = opAccount.get();
 
         accountService.prepareTransfer(sender, receiver, request.getTransferedAmount());
+
+        Transfer transfer = new Transfer();
+        transfer.setMoney(request.getTransferedAmount());
+        transfer.setReceiverAccount(receiver);
+        transfer.setSenderAccount(sender);
+
+        transferRepository.writeTransfer(transfer);
 
         TransferMoneyResponse response = new TransferMoneyResponse.Builder()
                 .sender(new GuestInfo(sender.getId(), sender.getEmail()))

@@ -34,7 +34,9 @@ public class Account {
     @Column(name = "creation_date")
     private LocalDate creationDate;
 
+
     @OneToMany(targetEntity = Transfer.class , fetch = FetchType.LAZY , mappedBy = "senderAccount" , cascade = CascadeType.REMOVE)
+
     private Set<Transfer> transfers = new HashSet<>();
 
     public Account() {

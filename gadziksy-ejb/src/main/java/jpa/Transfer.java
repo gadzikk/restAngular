@@ -1,5 +1,6 @@
 package jpa;
 
+
 import converter.LocalDateAdapter;
 import converter.LocalDateTimeAdapter;
 
@@ -8,6 +9,10 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+
+import javax.persistence.*;
+import java.math.BigDecimal;
+
 
 /**
  * Created by gadzik on 18.04.17.
@@ -36,14 +41,20 @@ public class Transfer {
     @Column(name = "creation_date")
     private LocalDateTime creationDate;
 
+    @Column
+    private BigDecimal money;
+
+
     public Transfer() {
     }
+
 
     public Transfer(Account senderAccount, Account receiverAccount, BigDecimal transferedMoney) {
         this.senderAccount = senderAccount;
         this.receiverAccount = receiverAccount;
         this.transferedMoney = transferedMoney;
     }
+
 
     public Long getId() {
         return id;
@@ -69,6 +80,7 @@ public class Transfer {
         this.receiverAccount = receiverAccount;
     }
 
+
     public BigDecimal getTransferedMoney() {
         return transferedMoney;
     }
@@ -87,7 +99,14 @@ public class Transfer {
     }
 
     @PrePersist
-    public void prepersist(){
+    public void prepersist() {
         creationDate = LocalDateTime.now();
+    }
+    public BigDecimal getMoney() {
+        return money;
+    }
+
+    public void setMoney(BigDecimal money) {
+        this.money = money;
     }
 }
