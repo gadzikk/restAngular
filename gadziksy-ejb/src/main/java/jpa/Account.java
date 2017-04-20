@@ -37,6 +37,9 @@ public class Account {
     @OneToMany(targetEntity = Transfer.class , fetch = FetchType.LAZY , mappedBy = "senderAccount" , cascade = CascadeType.REMOVE)
     private Set<Transfer> transfers = new HashSet<>();
 
+    @OneToMany(targetEntity = Operation.class , fetch = FetchType.LAZY , mappedBy = "account" , cascade = CascadeType.REMOVE)
+    private Set<Operation> operations = new HashSet<>();
+
     public Account() {
     }
 
@@ -98,6 +101,14 @@ public class Account {
 
     public void setCreationDate(LocalDate creationDate) {
         this.creationDate = creationDate;
+    }
+
+    public Set<Operation> getOperations() {
+        return operations;
+    }
+
+    public void setOperations(Set<Operation> operations) {
+        this.operations = operations;
     }
 
     @PrePersist

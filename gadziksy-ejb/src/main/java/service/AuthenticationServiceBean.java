@@ -20,6 +20,7 @@ public class AuthenticationServiceBean implements AuthenticationService {
     @Override
     public void assignSession(Account account) {
         session.setLoggedIn(true);
+        session.setId(account.getId());
         session.setEmail(account.getEmail());
         session.setCreationDate(account.getCreationDate());
         session.setMoney(account.getMoney());
@@ -28,6 +29,7 @@ public class AuthenticationServiceBean implements AuthenticationService {
     @Override
     public void clearSession() {
         session.setLoggedIn(false);
+        session.setId(null);
         session.setEmail("");
         session.setCreationDate(null);
         session.setMoney(null);

@@ -28,11 +28,13 @@ public class AccountServiceBean implements AccountService {
 //        CREATE FUNCTION doTransfer() RETURNS trigger AS $$
 //        BEGIN
 //        UPDATE ACCOUNT SET MONEY = MONEY - NEW.transfered_money WHERE id = NEW.SENDER_ID;
+//        INSERT INTO OPERATION (ACCOUNT_ID,TYPE,AMOUNT,CREATION_DATE) VALUES(NEW.SENDER_ID , 'OUTGOING_TRANSFER', -NEW.transfered_money,CURRENT_TIMESTAMP);
 //        UPDATE ACCOUNT SET MONEY = MONEY + NEW.transfered_money WHERE id = NEW.RECEIVER_ID;
+//        INSERT INTO OPERATION (ACCOUNT_ID,TYPE,AMOUNT,CREATION_DATE) VALUES(NEW.RECEIVER_ID , 'INCOMING_TRANSFER', NEW.transfered_money,CURRENT_TIMESTAMP);
 //        RETURN NULL;
 //        END;
 //        $$ language plpgsql;
-//
+
 //        CREATE TRIGGER transfertrg
 //        AFTER INSERT
 //        ON transfer

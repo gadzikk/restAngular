@@ -17,6 +17,7 @@ public class UserSession implements Serializable {
     private static final long serialUID = 213152232;
 
     private Boolean loggedIn;
+    private Long id;
     private String email;
     private LocalDate creationDate;
     private BigDecimal money;
@@ -24,8 +25,9 @@ public class UserSession implements Serializable {
     public UserSession() {
     }
 
-    public UserSession(Boolean loggedIn, String email, LocalDate creationDate, BigDecimal money) {
+    public UserSession(Boolean loggedIn, Long id, String email, LocalDate creationDate, BigDecimal money) {
         this.loggedIn = loggedIn;
+        this.id = id;
         this.email = email;
         this.creationDate = creationDate;
         this.money = money;
@@ -37,6 +39,14 @@ public class UserSession implements Serializable {
 
     public void setLoggedIn(Boolean loggedIn) {
         this.loggedIn = loggedIn;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getEmail() {
