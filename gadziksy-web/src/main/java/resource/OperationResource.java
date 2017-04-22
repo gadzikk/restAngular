@@ -16,6 +16,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 /**
@@ -48,7 +49,7 @@ public class OperationResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response getLastOperation() {
         Optional<Operation> opOperation = operationRepository.getLastOperation(session.getId());
-        if(!opOperation.isPresent()){
+        if (!opOperation.isPresent()) {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
         Operation operation = opOperation.get();
@@ -58,10 +59,40 @@ public class OperationResource {
     @GET
     @Path("/average")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response countAverage(){
+    public Response countAverage() {
         List<Operation> result = operationRepository.getAllOperations(session.getId());
+        if (result.isEmpty()) {
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
         BigDecimal average = operationService.countAverage(result);
         return Response.ok().entity(average).build();
     }
 
+    @GET
+    @Path("/median")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response countMedian() {
+        List<Operation> result = operationRepository.getAllOperations(session.getId());
+        if (result.isEmpty()) {
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
+        BigDecimal median = operationService.countMedian(result);
+        return Response.ok().entity(median).build();
+    }
+
+    @GET
+    @Path("/mode")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response countMode() {
+        List<Operation> result = operationRepository.getAllOperations(session.getId());
+        if (result.isEmpty()) {
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
+        Optional<BigDecimal> opMode = operationService.countMode(result);
+        if (!opMode.isPresent()) {
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
+        BigDecimal mode = opMode.get();
+        return Response.ok().entity(mode).build();
+    }
 }
