@@ -13,4 +13,5 @@ import java.util.Optional;
 public interface OperationRepository {
     List<Operation> getAllOperations(Long id);
     Optional<Operation> getLastOperation(Long id);
+    List<Operation> getOperationByPage(Long id, Integer start, Integer end);
 }

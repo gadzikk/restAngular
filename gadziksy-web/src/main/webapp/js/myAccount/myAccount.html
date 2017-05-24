@@ -22,6 +22,40 @@ margin:0px auto;">
     <div>
         CREATION DATE: {{account.creationDate}}
     </div>
+    <br/>
+    <br/>
+    <div>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Type</th>
+                <th>Amount</th>
+                <th>Creation Date</th>
+            </tr>
+            <tr ng-repeat="operation in operations">
+                <td>{{($index+1)+((currentpage -1)*10)}}</td>
+                <td>{{operation.type}}</td>
+                <td>{{operation.amount}}</td>
+                <td>{{operation.creationDate}}</td>
+            </tr>
+        </table>
+        <br/>
+        <input type="text" name="page" id="page" value="1" ng-model="page"/>
+        <input type="button" value="go" ng-click="getOperationByPage(page)">
+    </div>
+    <br/>
+    <div ng-hide="currentpage == 1" style="float:left;padding:10px">
+        <input type="button" value="<" ng-click="getOperationByPage(prevpage)">
+        <!--{{prevpage}}-->
+    </div>
+    <div style="float:left;padding:10px">
+        {{currentpage}}
+    </div>
+    <div style="float:left;padding:10px">
+         <!--{{nextpage}}-->
+        <input type="button" value=">" ng-click="getOperationByPage(nextpage)">
+    </div>
+
 </div>
 
 

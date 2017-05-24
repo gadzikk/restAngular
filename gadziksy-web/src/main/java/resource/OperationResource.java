@@ -8,10 +8,7 @@ import session.UserSession;
 import javax.ejb.EJB;
 import javax.faces.bean.RequestScoped;
 import javax.inject.Inject;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.math.BigDecimal;
@@ -55,6 +52,16 @@ public class OperationResource {
         Operation operation = opOperation.get();
         return Response.ok().entity(operation).build();
     }
+
+    @GET
+    @Path("/{start}/{end}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getOperationByPage(@PathParam("start") Integer start, @PathParam("end") Integer end) {
+        List<Operation> result = operationRepository.getOperationByPage(session.getId(), start, end);
+        return Response.ok().entity(result).build();
+
+    }
+
 
     @GET
     @Path("/average")

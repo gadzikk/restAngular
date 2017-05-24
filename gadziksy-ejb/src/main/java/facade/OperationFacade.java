@@ -32,4 +32,13 @@ public class OperationFacade extends AbstractFacade implements OperationReposito
         int lastElement = query.getResultList().size() - 1;
         return Optional.ofNullable(query.getResultList().get(lastElement));
     }
+
+    @Override
+    public List<Operation> getOperationByPage(Long id, Integer start , Integer end) {
+        TypedQuery<Operation> query = entityManager.createQuery("SELECT O FROM operation O where O.account.id=:id", Operation.class)
+                .setParameter("id", id)
+                .setFirstResult(start)
+                .setMaxResults(end);
+        return query.getResultList();
+    }
 }
