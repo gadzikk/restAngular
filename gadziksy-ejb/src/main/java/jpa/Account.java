@@ -44,6 +44,10 @@ public class Account {
     @JsonManagedReference
     private Set<Operation> operations = new HashSet<>();
 
+    @OneToMany(targetEntity = Message.class , fetch = FetchType.LAZY , mappedBy = "account" , cascade = CascadeType.REMOVE)
+    @JsonManagedReference
+    private Set<Message> messages = new HashSet<>();
+
     public Account() {
     }
 
@@ -113,6 +117,14 @@ public class Account {
 
     public void setOperations(Set<Operation> operations) {
         this.operations = operations;
+    }
+
+    public Set<Message> getMessages() {
+        return messages;
+    }
+
+    public void setMessages(Set<Message> messages) {
+        this.messages = messages;
     }
 
     @PrePersist

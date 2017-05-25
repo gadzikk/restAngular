@@ -1,8 +1,11 @@
 package resource;
 
+import com.sun.org.apache.regexp.internal.RE;
 import facadeApi.AccountRepository;
+import facadeApi.MailMessageRepository;
 import facadeApi.TransferRepository;
 import jpa.Account;
+import jpa.Message;
 import jpa.Transfer;
 import model.GuestInfo;
 import request.SaveAccountRequest;
@@ -17,8 +20,8 @@ import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.awt.*;
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -36,6 +39,9 @@ public class AccountResource {
 
     @EJB
     private AccountService accountService;
+
+    @EJB
+    private MailMessageRepository mailMessageRepository;
 
     @POST
     @Path("/create")
@@ -82,6 +88,14 @@ public class AccountResource {
                 .build();
 
         return Response.ok().entity(response).build();
+    }
+
+    @GET
+    @Path("/messages")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getAllMessages() {
+        List<Message> result = mailMessageRepository.getAllMessages(session.getId());
+        return Response.ok().entity(result).build();
     }
 
 
